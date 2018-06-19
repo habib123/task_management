@@ -1,0 +1,16 @@
+<div class="row">
+    <p>
+      <strong>Title:</strong>
+      <%= @todo.task %>
+    </p>
+</div>
+
+<h2>Comments</h2>
+  <%= render @todo.comments %>
+
+  <% if can? :create, @todo.comments.build %>
+    <h2>Add a comment:</h2>
+      <%= render partial:'comments/form', locals: { commentable: @todo } %>
+  <%end%>
+
+<%= link_to 'Back', campaign_path(@todo.campaign), class: 'btn btn-success' %>

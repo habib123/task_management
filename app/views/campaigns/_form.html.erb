@@ -1,0 +1,35 @@
+<%= form_for @campaign, url: user_campaigns_url, local: true do |f| %>
+
+  <%if @campaign.errors.any? %>
+    <div  id="error_explanation">
+        <h2>
+            <%= pluralize(@campaign.errors.count, "error")%>
+        </h2>
+      <ul>
+        <% @campaign.errors.full_messages.each do |msg|%>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  <%end%>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_area :title%>
+  </p>
+    <p>
+      <%= f.label :tags %><br>
+      <%= f.text_area :tags %>
+    </p>
+    <p> Select the duration</p>
+    <p>
+      <%= f.label :start_date %><br>
+      <%= f.datetime_select :start_date %>
+    </p>
+    <p>
+      <%= f.label :end_date %><br>
+      <%= f.datetime_select :end_date %>
+    </p>
+    <p>
+      <%= f.submit%>
+    </p>
+<% end %>

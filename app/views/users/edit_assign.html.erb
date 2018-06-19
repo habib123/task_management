@@ -1,0 +1,16 @@
+<%= form_for @user, url: user_assign_path(@user), local: true, method: :patch do |f| %>
+
+    <% for role in Role.all %>
+      <div>
+        <%= check_box_tag user_type(f.object), role.id, f.object.roles.include?(role) %>
+        <%=h role.name %>
+      </div>
+    <% end %>
+    <%= hidden_field_tag user_type(f.object), "" %>
+    <%= f.label :status %>
+    <%= f.select :status, status, include_blank: false %>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+<%end%>

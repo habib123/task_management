@@ -1,0 +1,8 @@
+<tr>
+  <td><%= user.username %></td>
+  <td><%= user.email %></td>
+  <td><%= user.try(:status) || 'NA'%></td>
+  <td><%= user.try(:service) || 'NA' %></td>
+  <td><%= user.try(:profession) || 'NA' %></td>
+  <td><button type="button" class="btn btn-lg btn-danger"><%= link_to 'edit', edit_user_path(user) %></button></td>
+</tr>

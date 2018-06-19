@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6">
+    <p>
+      <strong>Title:</strong>
+      <%= @campaign.title %>
+    </p>
+    <p>
+      <strong>Tags:</strong>
+      <%= @campaign.tags %>
+    </p>
+    <p>
+      <strong>Durations:</strong>
+      <%= timeduration(@campaign) %>
+    </p>
+
+    <h2>Comments</h2>
+    <%= render @campaign.comments %>
+    <% if can? :create, Comment.campaign_commentable%>
+      <h2>Add a comment:</h2>
+        <%= render partial:'comments/form', locals: { commentable: @campaign } %>
+    <% end %>
+    <button><%= link_to 'Back', user_campaigns_path(current_user) %></button>
+  </div>
+
+  <div class="col-sm-6">
+    <%= render partial: 'todos/index', locals: { todos: @campaign.todos } %>
+  </div>
+</div>

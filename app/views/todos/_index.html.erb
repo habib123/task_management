@@ -1,0 +1,19 @@
+<div class="col-sm-6">
+  <h4>List of Todos</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%todos.each do |todo|%>
+      <tr>
+        <td><%= todo.task %> </td>
+        <td><button type="button" class = "btn btn-info"><%= link_to "details", todo_path(todo) %>  </button></td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <p><button type="button" class="btn btn-lg btn-success"><%=link_to 'Create', new_campaign_todo_path(@campaign) %></button></p>

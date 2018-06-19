@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for @user,  url: user_path(@user), method: :patch do |f| %>
+      <%if @user.errors.any? %>
+        <div  id="error_explanation">
+            <h2>
+                <%= pluralize(@user.errors.count, "error")%>
+            </h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg|%>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+      <%end%>
+
+      <div class="field">
+        <%= f.label :username %><br/>
+        <%= f.text_field :username %>
+      </div>
+      <% if @user.try(:type) == 'Expert' %>
+        <%= f.fields_for :expert_detail do |ff| %>
+          <div class="field">
+            <%= ff.label :service %><br />
+            <%= ff.text_field :service %>
+          </div>
+          <div class="field">
+            <%= ff.label :profession %><br />
+            <%= ff.text_field :profession %>
+          </div>
+        <%end%>
+      <%end%>
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <button type="button" class="btn btn-lg btn-success"><%= link_to 'User Roll Assign', edit_assign_user_path(@user) %></button>
+  </div>
+</div>

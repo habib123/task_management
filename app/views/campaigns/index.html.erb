@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12 text-xs-center bootstrap-welcome">
+    <h1>User Information</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">title</th>
+            <th scope="col">tags</th>
+            <th scope="col">durations</th>
+            <th scope="col">details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @campaings.each do |campaign|%>
+          <tr>
+            <td scope="row"><%= campaign.id %></td>
+            <td><%= campaign.title %></td>
+            <td><%= campaign.tags %></td>
+            <td><%= timeduration(campaign)  %></td>
+            <td><button type="button" class="btn btn-info"><%= link_to "details", campaign_path(campaign) %> </button></td>
+            <div class="row">
+          </tr>
+          <%end%>
+        </tbody>
+      <table>
+    <% if can? :create, Campaign%>
+      <p><button type="button" class="btn btn-lg btn-success"><%=link_to 'Create', new_user_campaign_path(current_user) %></button></p>
+    <% end %>
+  </div>
+</div>

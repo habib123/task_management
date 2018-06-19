@@ -1,0 +1,8 @@
+<tr>
+  <td><%= expert.username %></td>
+  <td><%= expert.email %></td>
+  <td><%= expert.try(:status) || 'NA'%></td>
+  <td><%= expert.try(:service) || 'NA' %></td>
+  <td><%= expert.try(:profession) || 'NA' %></td>
+  <td><button type="button" class="btn btn-lg btn-danger"><%= link_to 'edit', edit_user_path(expert) %></button></td>
+</tr>
